@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "vZf9b8k5GOG+qTJuMNm5KiLl6DaTuvSkcCYx7hMShTrUQN7xXSF7kD6w6/h0UIN/NbuGYGWR+hFTlsSr4lN4IQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+  ],
+  "logs": []
+}
