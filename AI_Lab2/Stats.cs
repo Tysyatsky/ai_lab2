@@ -6,27 +6,41 @@ using System.Threading.Tasks;
 
 namespace AI_Lab2
 {
-    public static class Stats
+    public class Stats
     {
-        private string List<Subjects> _definedSubjects = new List<Subjects>({
-            Subjects.Math,
-            Subjects.Art,
-            Subjects.Chemistry,
-            Subjects.Geometry,
-            Subjects.Algebra,
-            Subjects.PE,
-            Subjects.Biology,
-            Subjects.English,
-            Subjects.Language
-        });
-;
+        private double _art { get; set; }
+        private double _people { get; set; }
 
-        public static double Salary { get; set; }
+        private double _technology { get; set; }
 
-        public static bool IsSalaryMatter { get; set; }
+        public Stats() 
+        { 
+            _art = 0;
+            _people = 0;
+            _technology = 0;
+        }
+        
+        public Stats Modify(double art, double people, double technology)
+        {
+            _art += art;
+            _people += people;
+            _technology += technology;
 
-        public static List<string> FavouriteSubject { get; set; }
+            _art = Math.Max(0, _art);
+            _people = Math.Max(0, _people);
+            _technology = Math.Max(0, _technology);
 
+            return this;
+        }
 
+        public Dictionary<string, double> GetFinalModifiers() 
+        {
+            return new Dictionary<string, double>
+            {
+                { "Art" , _art},
+                { "People" , _people},
+                { "Technology" , _technology},
+            };
+        }
     }
 }

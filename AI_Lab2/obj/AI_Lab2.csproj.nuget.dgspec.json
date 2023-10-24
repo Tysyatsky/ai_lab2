@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj": {}
+    "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\AI_Lab2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj": {
+    "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\AI_Lab2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj",
+        "projectUniqueName": "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\AI_Lab2.csproj",
         "projectName": "AI_Lab2",
-        "projectPath": "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj",
-        "packagesPath": "C:\\Users\\ntysh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\obj\\",
+        "projectPath": "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\AI_Lab2.csproj",
+        "packagesPath": "C:\\Users\\tysya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ntysh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tysya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,30 +54,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
