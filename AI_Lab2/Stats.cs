@@ -1,46 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace AI_Lab2;
 
-namespace AI_Lab2
+public class Stats
 {
-    public class Stats
-    {
-        private double _art { get; set; }
-        private double _people { get; set; }
+    private int Art { get; set; }
+    private int People { get; set; }
+    private int Technology { get; set; }
 
-        private double _technology { get; set; }
+    public string Name { get; set; }
 
-        public Stats() 
-        { 
-            _art = 0;
-            _people = 0;
-            _technology = 0;
-        }
-        
-        public Stats Modify(double art, double people, double technology)
-        {
-            _art += art;
-            _people += people;
-            _technology += technology;
-
-            _art = Math.Max(0, _art);
-            _people = Math.Max(0, _people);
-            _technology = Math.Max(0, _technology);
-
-            return this;
-        }
-
-        public Dictionary<string, double> GetFinalModifiers() 
-        {
-            return new Dictionary<string, double>
-            {
-                { "Art" , _art},
-                { "People" , _people},
-                { "Technology" , _technology},
-            };
-        }
+    public Stats() 
+    { 
+        Art = 0;
+        People = 0;
+        Technology = 0;
+        Name = string.Empty;
     }
+    
+    public Stats Modify(int art, int people, int technology)
+    {
+        Art += art;
+        People += people;
+        Technology += technology;
+
+        Art = Math.Max(0, Art);
+        People = Math.Max(0, People);
+        Technology = Math.Max(0, Technology);
+
+        return this;
+    }
+
+    public Dictionary<string, int> GetFinalModifiers() 
+    {
+        Normalize();
+
+        return new Dictionary<string, int>
+        {
+            { "Art" , Art},
+            { "People" , People},
+            { "Technology" , Technology},
+        };
+    }
+
+    private void Normalize()
+    {
+        int sum = Art + People + Technology;
+
+        int artActual = Art;
+        int peopleActual = People;
+        int technologyActual = Technology;
+
+        Art = GetPercentage(artActual, sum);
+        People = GetPercentage(peopleActual, sum);
+        Technology = GetPercentage(technologyActual, sum);
+    }
+
+    private static int GetPercentage(int actualNumber, int sum) => (int)((float)actualNumber / sum * 100);
 }
