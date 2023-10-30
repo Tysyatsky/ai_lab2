@@ -1,8 +1,9 @@
 ﻿using AI_Lab2.Enums;
+using System.Net;
 
 namespace AI_Lab2.Helpers;
 
-public class InputHelpers
+public static class InputHelpers
 {
     public static List<Subjects> SafeSubjectsInput(string message)
     {
@@ -51,7 +52,7 @@ public class InputHelpers
             return subjects;
         }
 
-        var splittedWords = subjectsStr.Split(new char[] { ',' }).ToList();
+        var splittedWords = subjectsStr.Split(',').ToList();
 
         foreach (string subject in splittedWords)
         {
@@ -61,6 +62,16 @@ public class InputHelpers
             }
         }
 
-        return subjects;
+        return subjects.UpdateSubjects();
+    }
+
+    private static List<Subjects> UpdateSubjects(this List<Subjects> subjects)
+    {
+        if (subjects is null)
+        {
+            throw new ArgumentNullException(nameof(subjects));
+        }
+
+        return subjects.Count == 1 ? subjects : subjects.Take(1).ToList();
     }
 }

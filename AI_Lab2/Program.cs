@@ -19,7 +19,7 @@ internal class Program
 
         Console.WriteLine("Hello, World!");
 
-        var testInput = TreeNodeHelpers.Input = Input.Create(1001, true, true, 5, 2, true, new List<Subjects>() { Subjects.Biology});
+        var testInput = TreeNodeHelpers.Input = Input.Create(1000, false, false, 5, 2, false, new List<Subjects>() { Subjects.Biology });
 
         var actualRoot = BuildTree();
 
@@ -37,9 +37,9 @@ internal class Program
         var results = (TreeNodeHelpers.Stats?.GetFinalModifiers())
             ?? throw new ArgumentNullException("Stats can not be null on result!");
 
-        results.TryGetValue("Art", out int artPoints);
-        results.TryGetValue("People", out int peoplePoint);
-        results.TryGetValue("Technology", out int technology);
+        results.TryGetValue("Art", out float artPoints);
+        results.TryGetValue("People", out float peoplePoint);
+        results.TryGetValue("Technology", out float technology);
 
         Console.WriteLine("Result: ");
         Console.WriteLine(artPoints);
@@ -65,107 +65,129 @@ internal class Program
     {
         var root = new TreeNode("root", DefaultRule);
 
-        var nodeA1 = new TreeNode("nodeA1", (input) => !Input.IsSalaryMatter, 0, 3, 5);
-        var nodeA2 = new TreeNode("nodeA2", (input) => Input.IsSalaryMatter, 1, 2, 0);
+        var nodeA1 = new TreeNode("nodeA1", (input) => !Input.IsSalaryMatter, 10, 5, 0);
+        var nodeA2 = new TreeNode("nodeA2", (input) => Input.IsSalaryMatter, 0, 5, 10);
 
-        var nodeB1 = new TreeNode("nodeB1", (input) => Input.Salary > 0 && Input.Salary <= 100, 4, 3, 0);
-        var nodeB2 = new TreeNode("nodeB2", (input) => Input.Salary > 100 && Input.Salary <= 1000, 2, 4, 3);
-        var nodeB3 = new TreeNode("nodeB3", (input) => Input.Salary > 1000 && Input.Salary <= 10000, 0, 3, 6);
-        var nodeB4 = new TreeNode("nodeB4", (input) => Input.Salary > 10000, 0, 1, 8);
+        var nodeB1 = new TreeNode("nodeB1", (input) => Input.Salary > 0 && Input.Salary < 1000, 10, 5, 0);
+        var nodeB2 = new TreeNode("nodeB2", (input) => Input.Salary < 2000, 0, 5, 0);
+        var nodeB3 = new TreeNode("nodeB3", (input) => Input.Salary >= 2000, 0, 5, 10);
 
-        var nodeC1 = new TreeNode("nodeC1", (input) => Input.LovesCartoons && Input.IsSalaryMatter && Input.LikePeople, 2, -1, 2);
-        var nodeC2 = new TreeNode("nodeC2", (input) => Input.LovesCartoons && !Input.IsSalaryMatter && Input.LikePeople, 5, 0, -5);
-        var nodeC3 = new TreeNode("nodeC3", (input) => !Input.LovesCartoons && Input.IsSalaryMatter && Input.LikePeople, -2, 0, 8);
-        var nodeC4 = new TreeNode("Teacher", (input) => !Input.LovesCartoons && !Input.IsSalaryMatter && Input.LikePeople, -1, 8, -1); // teacher
-        var nodeC5 = new TreeNode("Development", (input) => !Input.LovesCartoons && Input.IsSalaryMatter && !Input.LikePeople, -2, -2, 9); // developer
-        var nodeC6 = new TreeNode("nodeC6", (input) => !Input.LovesCartoons && !Input.IsSalaryMatter && !Input.LikePeople, -2, -2, -2); 
-        var nodeC7 = new TreeNode("Artist", (input) => Input.LovesCartoons && Input.IsSalaryMatter && !Input.LikePeople, 8, -1, -1); // art
-        var nodeC8 = new TreeNode("nodeC8", (input) => !Input.LovesCartoons && !Input.IsSalaryMatter && Input.LikePeople, -1, 8, -1); // ???
+        var nodeC1 = new TreeNode("Art", (input) => Input.LovesCartoons, 25, 5, 0);
+        var nodeC2 = new TreeNode("Design", (input) => Input.LovesCartoons, 15, 5, 0);
+        var nodeC3 = new TreeNode("nodeC3", (input) => Input.LovesCartoons, 10, 0, -5);
+
+        var nodeC11 = new TreeNode("nodeC11", (input) => !Input.LovesCartoons, -10, 5, 10);
+        var nodeC21 = new TreeNode("nodeC21", (input) => !Input.LovesCartoons, 5, 5, 5); 
+        var nodeC31 = new TreeNode("nodeC31", (input) => !Input.LovesCartoons, 0, 20, 20);
+
+        var nodeD11 = new TreeNode("Teacher", (input) => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra) ||
+         Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 0, 40);
+        var nodeD21 = new TreeNode("Management", (input) => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5); // management
+        var nodeD31 = new TreeNode("Artist", (input) => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0); // art
+
+        var nodeD12 = new TreeNode("nodeD12", (input) => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40);
+        var nodeD22 = new TreeNode("nodeD22", (input) => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
+        var nodeD32 = new TreeNode("nodeD32", (input) => Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 15, 10);
+        var nodeD42 = new TreeNode("nodeD42", (input) => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
+
+        var nodeD13 = new TreeNode("nodeD13", (input) => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40);
+        var nodeD23 = new TreeNode("nodeD23", (input) => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
+        var nodeD33 = new TreeNode("Doctor", (input) => Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 15, 10);
+        var nodeD43 = new TreeNode("Design", (input) => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
+
+        var nodeD14 = new TreeNode("Development", (input) => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40); // dev
+        var nodeD24 = new TreeNode("Private tutor", (input) => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
+        var nodeD34 = new TreeNode("nodeD34", (input) => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
+
+        var nodeE1 = new TreeNode("Management", (input) => Input.LikePeople, 0, 15, 0); // management
+        var nodeE2 = new TreeNode("Nurse", (input) => Input.LikePeople, 0, 15, 0);
+        var nodeE3 = new TreeNode("Phycologist", (input) => Input.LikePeople, 0, 15, 0);
+        var nodeE4 = new TreeNode("Teacher", (input) => Input.LikePeople, 0, 15, 0);
+        var nodeE5 = new TreeNode("Art tutor", (input) => Input.LikePeople, 0, 15, 0);
+        var nodeE6 = new TreeNode("nodeE6", (input) => Input.LikePeople, 0, 15, 0);
+
+        var nodeE11 = new TreeNode("Development", (input) => !Input.LikePeople, 0, -15, 0); // dev
+        var nodeE21 = new TreeNode("nodeE21", (input) => !Input.LikePeople, 0, -15, 0);
+        var nodeE31 = new TreeNode("nodeE31", (input) => !Input.LikePeople, 0, -15, 0);
+        var nodeE41 = new TreeNode("Mechanik", (input) => !Input.LikePeople, 0, -15, 0);
+        var nodeE51 = new TreeNode("Animator", (input) => !Input.LikePeople, 0, -15, 0);
+        var nodeE61 = new TreeNode("Phyciatrist", (input) => !Input.LikePeople, 0, -15, 0);
+
+        var nodeF1 = new TreeNode("nodeF1", (input) => Input.TimeSpentOnline < 3, 0, 5, 0);
+        var nodeF2 = new TreeNode("nodeF2", (input) => Input.TimeSpentOnline >= 3 && Input.TimeSpentOnline < 6, 0, 10, 0);
+        var nodeF3 = new TreeNode("SSM", (input) => Input.TimeSpentOnline >= 6, 0, 25, 0);
+        var nodeF4 = new TreeNode("Influencer", (input) => Input.TimeSpentOnline >= 12, 0, 30, 0);
+
+        var nodeG1 = new TreeNode("Unemplayed", (input) => Input.SocialMediaCount < 5, 0, 5, 0);
+        var nodeG2 = new TreeNode("Law", (input) => Input.SocialMediaCount >= 5, 0, 15, 0);
+
+        var nodeG3 = new TreeNode("Gardener", (input) => Input.SocialMediaCount < 5, 0, 5, 0);
+        var nodeG4 = new TreeNode("SSM", (input) => Input.SocialMediaCount >= 5, 0, 15, 0);
+
 
         root.AddChild(nodeA1); // salary matter
         root.AddChild(nodeA2); // salary doesn't matter
 
         nodeA1.AddChild(nodeB1); 
         nodeA1.AddChild(nodeB2);
+        nodeA2.AddChild(nodeB2);
         nodeA2.AddChild(nodeB3);
-        nodeA2.AddChild(nodeB4);
 
-        nodeB1.AddChild(nodeC2);
-        nodeB1.AddChild(nodeC4);
-        nodeB2.AddChild(nodeC6);
-        nodeB2.AddChild(nodeC8);
-
-        nodeB3.AddChild(nodeC1);
+        nodeB1.AddChild(nodeC1); // Art
+        nodeB1.AddChild(nodeC11);
+        nodeB2.AddChild(nodeC2); // Design
+        nodeB2.AddChild(nodeC21);
         nodeB3.AddChild(nodeC3);
-        nodeB4.AddChild(nodeC5);
-        nodeB4.AddChild(nodeC7);
+        nodeB3.AddChild(nodeC31);
 
-        BuildSubjectsSubTree(nodeC1);
-        BuildSubjectsSubTree(nodeC2);
-        BuildSubjectsSubTree(nodeC3);
-        BuildSubjectsSubTree(nodeC6);
-        BuildSubjectsSubTree(nodeC8);
+        nodeC11.AddChild(nodeD11); // d
+        nodeC11.AddChild(nodeD21); // d
+        nodeC11.AddChild(nodeD31); // d
+        nodeC21.AddChild(nodeD12);
+        nodeC21.AddChild(nodeD22);
+        nodeC21.AddChild(nodeD32);
+        nodeC21.AddChild(nodeD42);
+        nodeC3.AddChild(nodeD13);
+        nodeC3.AddChild(nodeD23);
+        nodeC3.AddChild(nodeD33); // d
+        nodeC3.AddChild(nodeD43); // d
+        nodeC31.AddChild(nodeD14); // d
+        nodeC31.AddChild(nodeD24); // d
+        nodeC31.AddChild(nodeD33); // d
+        nodeC31.AddChild(nodeD34);
 
-        return root;
-    }
+        nodeD12.AddChild(nodeE1); // management
+        nodeD12.AddChild(nodeE11); // dev
+        nodeD22.AddChild(nodeE1); // management
+        nodeD22.AddChild(nodeE11); // dev
+        nodeD32.AddChild(nodeE2); // d
+        nodeD32.AddChild(nodeE21);
+        nodeD42.AddChild(nodeE3); // d
+        nodeD42.AddChild(nodeE31);
+        nodeD13.AddChild(nodeE4); // management
+        nodeD13.AddChild(nodeE41); // dev
+        nodeD23.AddChild(nodeE5); // d
+        nodeD23.AddChild(nodeE51); // d
+        nodeD34.AddChild(nodeE6);
+        nodeD34.AddChild(nodeE61); // d
 
-    private static TreeNode BuildSubjectsSubTree(TreeNode root)
-    {
-        var nodeD1 = new TreeNode("Development", (input) => Input.FavouriteSubjects?.Contains(Subjects.Math) ?? false, 0, 2, 10); // Math -> Dev
-        var nodeD11 = new TreeNode("nodeD11", (input) => !Input.FavouriteSubjects?.Contains(Subjects.Math) ?? false, 0, 2, 10); // Math -> Dev
-        var nodeD2 = new TreeNode("Influencer", (input) => Input.FavouriteSubjects.Contains(Subjects.Phycology), 1, 10, 2); // Phycology -> Influencer
-        var nodeD21 = new TreeNode("nodeD21", (input) => !Input.FavouriteSubjects.Contains(Subjects.Phycology), 1, 10, 2); // Phycology -> Influencer
-        var nodeD3 = new TreeNode("Artist", (input) => Input.FavouriteSubjects.Contains(Subjects.Art), 10, 1, 0); // Art -> Artist
-        var nodeD31 = new TreeNode("nodeD31", (input) => !Input.FavouriteSubjects.Contains(Subjects.Art), 10, 1, 0); // Art -> Artist
-        var nodeD4 = new TreeNode("nodeD4", (input) => Input.FavouriteSubjects.Contains(Subjects.PE), 0, 5, 0);
-        var nodeD5 = new TreeNode("Development", (input) => Input.FavouriteSubjects.Contains(Subjects.Programming), 1, 2, 15); // Programming -> Dev 
-        var nodeD51 = new TreeNode("nodeD51", (input) => !Input.FavouriteSubjects.Contains(Subjects.Programming), 1, 2, 15); // Programming -> Dev 
-        var nodeD6 = new TreeNode("Development", (input) => Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 5); // Alge -> Dev
-        var nodeD61 = new TreeNode("nodeD61", (input) => !Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 5); // Alge -> Dev
-        var nodeD7 = new TreeNode("nodeD7", (input) => Input.FavouriteSubjects.Contains(Subjects.English), 0, 5, 0);
-        var nodeD8 = new TreeNode("Development", (input) => Input.FavouriteSubjects.Contains(Subjects.Geometry), 0, 0, 5); // Geo -> Dev
-        var nodeD81 = new TreeNode("nodeD81", (input) => !Input.FavouriteSubjects.Contains(Subjects.Geometry), 0, 0, 5); // Geo -> Dev
-        var nodeD9 = new TreeNode("Doctor", (input) => Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.Chemistry), 2, 10, 3); // doctor
+        nodeE21.AddChild(nodeF1);
+        nodeE21.AddChild(nodeF2);
+        nodeE21.AddChild(nodeF3); //d
+        nodeE31.AddChild(nodeF1);
+        nodeE31.AddChild(nodeF2);
+        nodeE31.AddChild(nodeF3); //d
+        nodeE6.AddChild(nodeF1);
+        nodeE6.AddChild(nodeF2);
+        nodeE6.AddChild(nodeF3); //d
+        nodeE6.AddChild(nodeF4); //d
 
-        var nodeF2 = new TreeNode("Design", (input) => Input.TimeSpentOnline > 4 && Input.TimeSpentOnline <= 8, 8, 2, 2); // Design
-        var nodeF3 = new TreeNode("Influencer", (input) => Input.TimeSpentOnline > 8 && Input.TimeSpentOnline <= 12, 2, 10, 2); // Insluencer
-        var nodeF4 = new TreeNode("Development", (input) => Input.TimeSpentOnline > 12 && Input.TimeSpentOnline <= 16, 1, 2, 3); // Dev
-        var nodeF5 = new TreeNode("Teacher", (input) => Input.TimeSpentOnline > 16 && Input.TimeSpentOnline <= 20, 2, 5, 1); // teacher
-        var nodeF6 = new TreeNode("Management", (input) => Input.TimeSpentOnline > 20 && Input.TimeSpentOnline < 24, 0, 4, 3); // management
-
-        var leafArtist = new TreeNode("Artist", DefaultRule);
-        var leafTeacher = new TreeNode("Teacher", DefaultRule);
-        var leafDevelopment = new TreeNode("Development", DefaultRule);
-        var leafDesign = new TreeNode("Design", DefaultRule);
-        var leafManagement = new TreeNode("Management", DefaultRule);
-        var leafInfluencer = new TreeNode("Influencer", DefaultRule);
-        var leafDoctor = new TreeNode("Doctor", DefaultRule);
-
-        root.AddChild(nodeD1);
-        root.AddChild(nodeD11);
-
-        nodeD11.AddChild(nodeD2);
-        nodeD11.AddChild(nodeD21);
-
-        nodeD21.AddChild(nodeD3);
-        nodeD21.AddChild(nodeD31);
-
-        nodeD31.AddChild(nodeD4);
-        nodeD31.AddChild(nodeD5);
-        nodeD31.AddChild(nodeD51);
-
-        nodeD51.AddChild(nodeD6);
-        nodeD51.AddChild(nodeD61);
-        
-        nodeD61.AddChild(nodeD7);
-        nodeD61.AddChild(nodeD8);
-        nodeD61.AddChild(nodeD81);
-        
-        nodeD81.AddChild(nodeD9);
-        nodeD81.AddChild(nodeF6);
+        nodeF1.AddChild(nodeG1);
+        nodeF1.AddChild(nodeG2);
+        nodeF2.AddChild(nodeG3);
+        nodeF2.AddChild(nodeG4);
 
         return root;
-
     }
 
     private static Input GenerateInput()

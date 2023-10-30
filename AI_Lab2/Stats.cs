@@ -2,9 +2,9 @@
 
 public class Stats
 {
-    private int Art { get; set; }
-    private int People { get; set; }
-    private int Technology { get; set; }
+    private float Art { get; set; }
+    private float People { get; set; }
+    private float Technology { get; set; }
 
     public string Name { get; set; }
 
@@ -29,11 +29,11 @@ public class Stats
         return this;
     }
 
-    public Dictionary<string, int> GetFinalModifiers() 
+    public Dictionary<string, float> GetFinalModifiers() 
     {
         Normalize();
 
-        return new Dictionary<string, int>
+        return new Dictionary<string, float>
         {
             { "Art" , Art},
             { "People" , People},
@@ -43,16 +43,16 @@ public class Stats
 
     private void Normalize()
     {
-        int sum = Art + People + Technology;
+        float sum = Art + People + Technology;
 
-        int artActual = Art;
-        int peopleActual = People;
-        int technologyActual = Technology;
+        float artActual = Art;
+        float peopleActual = People;
+        float technologyActual = Technology;
 
         Art = GetPercentage(artActual, sum);
         People = GetPercentage(peopleActual, sum);
         Technology = GetPercentage(technologyActual, sum);
     }
 
-    private static int GetPercentage(int actualNumber, int sum) => (int)((float)actualNumber / sum * 100);
+    private static float GetPercentage(float actualNumber, float sum) => (actualNumber / sum * 100);
 }

@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "1M5ogEkH9F46AH2wUL820SWEmQ/IDXIWiq53AOmJjH4SZKIFPctR5v6o4fev4sj5xfqBLn5R//xjr03DzyJmGQ==",
+  "dgSpecHash": "JHEv9aB1Yt40sCyJfUV1sh9uO1xj86n+D+qW+kf0adaYdZ5BmwcOmbjLDKmaWs30mrlYFbpRHIEFcVjUq0PivQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tysya\\Desktop\\lab2_shi\\ai_lab2\\AI_Lab2\\AI_Lab2.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\ntysh\\source\\repos\\AI_Lab2\\AI_Lab2\\AI_Lab2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\ntysh\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.24\\microsoft.netcore.app.host.win-x64.6.0.24.nupkg.sha512"
+  ],
   "logs": []
 }

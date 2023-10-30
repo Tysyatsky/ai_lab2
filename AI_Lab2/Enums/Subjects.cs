@@ -2,15 +2,15 @@
 
 public enum Subjects
 {
-    Math,
-    Art,
-    Chemistry,
-    Geometry,
-    Algebra,
-    PE,
-    Biology,
-    English,
-    Language,
-    Phycology,
-    Programming,
+    Math = 01,
+    Art = 02,
+    Chemistry = 03, 
+    Geometry = 11,
+    Algebra = 21,
+    PE = 04,
+    Biology = 13,
+    English = 14,
+    Language = 24,
+    Phycology = 34,
+    Programming = 31,
 }
