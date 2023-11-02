@@ -9,10 +9,10 @@ public class TreeNode
     private readonly int _artPoints;
     private readonly int _peoplePoints;
     private readonly int _technologyPoints;
-    private Func<Input, bool> Rule { get; set; }
+    private Func<bool> Rule { get; set; }
     public string Name { get { return _name; } }
 
-    public TreeNode(string name, Func<Input, bool> rules)
+    public TreeNode(string name, Func<bool> rules)
     {
         _name = name;
         _artPoints = 0;
@@ -22,7 +22,7 @@ public class TreeNode
         Rule = rules;
     }
 
-    public TreeNode(string name, Func<Input, bool> rules, int art, int people, int technology)
+    public TreeNode(string name, Func<bool> rules, int art, int people, int technology)
     {
         _name = name;
         _artPoints = art;
@@ -49,10 +49,9 @@ public class TreeNode
             return;
         }
 
-        if (treeNode.Rule(TreeNodeHelpers.Input
-            ?? throw new ArgumentException("Input is null")))
+        if (treeNode.Rule())
         {
-            Console.WriteLine(treeNode.Name);
+            OutputHelper.PrintName(treeNode.Name);
             TreeNodeHelpers.Stats?.Modify(
                 treeNode._artPoints,
                 treeNode._peoplePoints,
