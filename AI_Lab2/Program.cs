@@ -59,7 +59,7 @@ internal class Program
         var nodeB2 = new TreeNode("nodeB2", () => Input.Salary < 2000, 0, 5, 0);
         var nodeB3 = new TreeNode("nodeB3", () => Input.Salary >= 2000, 0, 5, 10);
 
-        var nodeC1 = new TreeNode("Art", () => Input.LovesCartoons, 25, 5, 0);
+        var nodeC1 = new TreeNode("Pop Artist", () => Input.LovesCartoons, 25, 5, 0);
         var nodeC2 = new TreeNode("Design", () => Input.LovesCartoons, 15, 5, 0);
         var nodeC3 = new TreeNode("nodeC3", () => Input.LovesCartoons, 10, 0, -5);
 
@@ -70,7 +70,7 @@ internal class Program
         var nodeD11 = new TreeNode("Teacher", () => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra) ||
          Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 0, 40);
         var nodeD21 = new TreeNode("Management", () => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5); // management
-        var nodeD31 = new TreeNode("Artist", () => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0); // art
+        var nodeD31 = new TreeNode("Artist Realist", () => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0); // art
 
         var nodeD12 = new TreeNode("nodeD12", () => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40);
         var nodeD22 = new TreeNode("nodeD22", () => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
@@ -91,25 +91,24 @@ internal class Program
         var nodeE3 = new TreeNode("Phycologist", () => Input.LikePeople, 0, 15, 0);
         var nodeE4 = new TreeNode("Teacher", () => Input.LikePeople, 0, 15, 0);
         var nodeE5 = new TreeNode("Art tutor", () => Input.LikePeople, 0, 15, 0);
-        var nodeE6 = new TreeNode("nodeE6", () => Input.LikePeople, 0, 15, 0);
+        var nodeE6 = new TreeNode("Phyciatrist", () => Input.LikePeople, 0, 15, 0);
 
         var nodeE11 = new TreeNode("Development", () => !Input.LikePeople, 0, -15, 0); // dev
         var nodeE21 = new TreeNode("nodeE21", () => !Input.LikePeople, 0, -15, 0);
         var nodeE31 = new TreeNode("nodeE31", () => !Input.LikePeople, 0, -15, 0);
         var nodeE41 = new TreeNode("Mechanik", () => !Input.LikePeople, 0, -15, 0);
-        var nodeE51 = new TreeNode("Animator", () => !Input.LikePeople, 0, -15, 0);
-        var nodeE61 = new TreeNode("Phyciatrist", () => !Input.LikePeople, 0, -15, 0);
+        var nodeE51 = new TreeNode("3D Animator", () => !Input.LikePeople, 0, -15, 0);
+        var nodeE61 = new TreeNode("nodeE6", () => !Input.LikePeople, 0, -15, 0);
 
         var nodeF1 = new TreeNode("nodeF1", () => Input.TimeSpentOnline < 3, 0, 5, 0);
         var nodeF2 = new TreeNode("nodeF2", () => Input.TimeSpentOnline >= 3 && Input.TimeSpentOnline < 6, 0, 10, 0);
         var nodeF3 = new TreeNode("SSM", () => Input.TimeSpentOnline >= 6, 0, 25, 0);
-        var nodeF4 = new TreeNode("Influencer", () => Input.TimeSpentOnline >= 12, 0, 30, 0);
 
-        var nodeG1 = new TreeNode("Unemplayed", () => Input.SocialMediaCount < 5, 0, 5, 0);
+        var nodeG1 = new TreeNode("Gardener", () => Input.SocialMediaCount < 5, 0, 5, 0);
         var nodeG2 = new TreeNode("Law", () => Input.SocialMediaCount >= 5, 0, 15, 0);
 
-        var nodeG3 = new TreeNode("Gardener", () => Input.SocialMediaCount < 5, 0, 5, 0);
-        var nodeG4 = new TreeNode("SSM", () => Input.SocialMediaCount >= 5, 0, 15, 0);
+        var nodeG3 = new TreeNode("SSM", () => Input.SocialMediaCount < 5, 0, 5, 0);
+        var nodeG4 = new TreeNode("Influencer", () => Input.SocialMediaCount >= 5, 0, 15, 0);
 
 
         root.AddChild(nodeA1); // salary matter
@@ -164,10 +163,9 @@ internal class Program
         nodeE31.AddChild(nodeF1);
         nodeE31.AddChild(nodeF2);
         nodeE31.AddChild(nodeF3); //d
-        nodeE6.AddChild(nodeF1);
-        nodeE6.AddChild(nodeF2);
-        nodeE6.AddChild(nodeF3); //d
-        nodeE6.AddChild(nodeF4); //d
+        nodeE61.AddChild(nodeF1);
+        nodeE61.AddChild(nodeF2);
+        nodeE61.AddChild(nodeF3); //d
 
         nodeF1.AddChild(nodeG1);
         nodeF1.AddChild(nodeG2);
