@@ -62,11 +62,9 @@ internal class Program
         var nodeB21 = new TreeNode("nodeB21", () => Input.Salary >= 2000, 0, 5, 10);
 
         var nodeC1 = new TreeNode("Pop Artist", () => Input.LovesCartoons, 25, 5, 0);
-        var nodeC2 = new TreeNode("Design", () => Input.LovesCartoons, 15, 5, 0);
         var nodeC3 = new TreeNode("nodeC3", () => Input.LovesCartoons, 10, 0, -5);
 
-        var nodeC11 = new TreeNode("nodeC11", () => !Input.LovesCartoons, -10, 5, 10);
-        var nodeC21 = new TreeNode("nodeC21", () => !Input.LovesCartoons, 5, 5, 5); 
+        var nodeC11 = new TreeNode("nodeC11", () => !Input.LovesCartoons, -10, 5, 10); 
         var nodeC31 = new TreeNode("nodeC31", () => !Input.LovesCartoons, 0, 20, 20);
 
         var nodeD11 = new TreeNode("Teacher", () => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra) ||
@@ -79,25 +77,15 @@ internal class Program
         var nodeD32 = new TreeNode("nodeD32", () => Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 15, 10);
         var nodeD42 = new TreeNode("nodeD42", () => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
 
-        var nodeD13 = new TreeNode("nodeD13", () => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40);
-        var nodeD23 = new TreeNode("nodeD23", () => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
-        var nodeD33 = new TreeNode("Doctor", () => Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 15, 10);
-        var nodeD43 = new TreeNode("Design", () => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
-
         var nodeD14 = new TreeNode("Development", () => Input.FavouriteSubjects.Contains(Subjects.Math) || Input.FavouriteSubjects.Contains(Subjects.Programming) || Input.FavouriteSubjects.Contains(Subjects.Algebra), 0, 0, 40); // dev
         var nodeD24 = new TreeNode("Private tutor", () => Input.FavouriteSubjects.Contains(Subjects.Geometry) || Input.FavouriteSubjects.Contains(Subjects.English) || Input.FavouriteSubjects.Contains(Subjects.Language), 5, 15, 5);
+        var nodeD33 = new TreeNode("Doctor", () => Input.FavouriteSubjects.Contains(Subjects.Chemistry) || Input.FavouriteSubjects.Contains(Subjects.Biology) || Input.FavouriteSubjects.Contains(Subjects.PE), 0, 15, 10);
         var nodeD34 = new TreeNode("nodeD34", () => Input.FavouriteSubjects.Contains(Subjects.Phycology) || Input.FavouriteSubjects.Contains(Subjects.Art), 50, 0, 0);
 
-        var nodeE1 = new TreeNode("Management", () => Input.LikePeople, 0, 15, 0); // management
-        var nodeE2 = new TreeNode("Nurse", () => Input.LikePeople, 0, 15, 0);
         var nodeE3 = new TreeNode("Phycologist", () => Input.LikePeople, 0, 15, 0);
         var nodeE4 = new TreeNode("Teacher", () => Input.LikePeople, 0, 15, 0);
         var nodeE5 = new TreeNode("Art tutor", () => Input.LikePeople, 0, 15, 0);
-        var nodeE6 = new TreeNode("Phyciatrist", () => Input.LikePeople, 0, 15, 0);
 
-        var nodeE11 = new TreeNode("Development", () => !Input.LikePeople, 0, -15, 0); // dev
-        var nodeE21 = new TreeNode("nodeE21", () => !Input.LikePeople, 0, -15, 0);
-        var nodeE31 = new TreeNode("nodeE31", () => !Input.LikePeople, 0, -15, 0);
         var nodeE41 = new TreeNode("Mechanik", () => !Input.LikePeople, 0, -15, 0);
         var nodeE51 = new TreeNode("3D Animator", () => !Input.LikePeople, 0, -15, 0);
         var nodeE61 = new TreeNode("nodeE6", () => !Input.LikePeople, 0, -15, 0);
@@ -124,53 +112,28 @@ internal class Program
 
         nodeB1.AddChild(nodeC1); // Art
         nodeB1.AddChild(nodeC11);
-
-        nodeB11.AddChild(nodeC2);
-        nodeB11.AddChild(nodeC21);
-
-        nodeB21.AddChild(nodeC2);
-        nodeB21.AddChild(nodeC21);
         
         nodeB2.AddChild(nodeC3);
         nodeB2.AddChild(nodeC31);
 
+        nodeB11.AddChild(nodeC1);
+        nodeB11.AddChild(nodeC11);
+
+        nodeB21.AddChild(nodeC3);
+        nodeB21.AddChild(nodeC31);
+
         nodeC11.AddChild(nodeD11); // d
         nodeC11.AddChild(nodeD21); // d
         nodeC11.AddChild(nodeD31); // d
-        nodeC21.AddChild(nodeD12);
-        nodeC21.AddChild(nodeD22);
-        nodeC21.AddChild(nodeD32);
-        nodeC21.AddChild(nodeD42);
-        nodeC3.AddChild(nodeD13);
-        nodeC3.AddChild(nodeD23);
         nodeC3.AddChild(nodeD33); // d
-        nodeC3.AddChild(nodeD43); // d
         nodeC31.AddChild(nodeD14); // d
         nodeC31.AddChild(nodeD24); // d
         nodeC31.AddChild(nodeD33); // d
         nodeC31.AddChild(nodeD34);
 
-        nodeD12.AddChild(nodeE1); // management
-        nodeD12.AddChild(nodeE11); // dev
-        nodeD22.AddChild(nodeE1); // management
-        nodeD22.AddChild(nodeE11); // dev
-        nodeD32.AddChild(nodeE2); // d
-        nodeD32.AddChild(nodeE21);
         nodeD42.AddChild(nodeE3); // d
-        nodeD42.AddChild(nodeE31);
-        nodeD13.AddChild(nodeE4); // management
-        nodeD13.AddChild(nodeE41); // dev
-        nodeD23.AddChild(nodeE5); // d
-        nodeD23.AddChild(nodeE51); // d
-        nodeD34.AddChild(nodeE6);
         nodeD34.AddChild(nodeE61); // d
 
-        nodeE21.AddChild(nodeF1);
-        nodeE21.AddChild(nodeF2);
-        nodeE21.AddChild(nodeF3); //d
-        nodeE31.AddChild(nodeF1);
-        nodeE31.AddChild(nodeF2);
-        nodeE31.AddChild(nodeF3); //d
         nodeE61.AddChild(nodeF1);
         nodeE61.AddChild(nodeF2);
         nodeE61.AddChild(nodeF3); //d
