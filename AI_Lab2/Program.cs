@@ -55,9 +55,11 @@ internal class Program
         var nodeA1 = new TreeNode("nodeA1", () => !Input.IsSalaryMatter, 10, 5, 0);
         var nodeA2 = new TreeNode("nodeA2", () => Input.IsSalaryMatter, 0, 5, 10);
 
-        var nodeB1 = new TreeNode("nodeB1", () => Input.Salary > 0 && Input.Salary < 1000, 10, 5, 0);
-        var nodeB2 = new TreeNode("nodeB2", () => Input.Salary < 2000, 0, 5, 0);
-        var nodeB3 = new TreeNode("nodeB3", () => Input.Salary >= 2000, 0, 5, 10);
+        var nodeB1 = new TreeNode("nodeB1", () => Input.Salary > 0 && Input.Salary < 2000, 10, 5, 0);
+        var nodeB2 = new TreeNode("nodeB3", () => Input.Salary >= 2000, 0, 5, 10);
+        
+        var nodeB11 = new TreeNode("nodeB11", () => Input.Salary < 2000, 10, 5, 0);
+        var nodeB21 = new TreeNode("nodeB21", () => Input.Salary >= 2000, 0, 5, 10);
 
         var nodeC1 = new TreeNode("Pop Artist", () => Input.LovesCartoons, 25, 5, 0);
         var nodeC2 = new TreeNode("Design", () => Input.LovesCartoons, 15, 5, 0);
@@ -116,15 +118,21 @@ internal class Program
 
         nodeA1.AddChild(nodeB1); 
         nodeA1.AddChild(nodeB2);
-        nodeA2.AddChild(nodeB2);
-        nodeA2.AddChild(nodeB3);
+
+        nodeA2.AddChild(nodeB11);
+        nodeA2.AddChild(nodeB21);
 
         nodeB1.AddChild(nodeC1); // Art
         nodeB1.AddChild(nodeC11);
-        nodeB2.AddChild(nodeC2); // Design
-        nodeB2.AddChild(nodeC21);
-        nodeB3.AddChild(nodeC3);
-        nodeB3.AddChild(nodeC31);
+
+        nodeB11.AddChild(nodeC2);
+        nodeB11.AddChild(nodeC21);
+
+        nodeB21.AddChild(nodeC2);
+        nodeB21.AddChild(nodeC21);
+        
+        nodeB2.AddChild(nodeC3);
+        nodeB2.AddChild(nodeC31);
 
         nodeC11.AddChild(nodeD11); // d
         nodeC11.AddChild(nodeD21); // d
